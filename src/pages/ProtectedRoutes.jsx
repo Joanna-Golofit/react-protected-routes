@@ -1,9 +1,11 @@
 import { Route } from "react-router-dom";
+import LoggedIn from "./LoggedIn";
+import NotLoggedIn from "./NotLoggedIn";
 
-const ProtectedRoutes = ({ isAuth, component: Component }) => {
+const ProtectedRoutes = ({ isAuth, component: Component, name }) => {
   return (
     <>
-      {isAuth ? <div> Protected true</div> : <div> Protected false </div>}
+      {isAuth ? <LoggedIn name={name}/> : <NotLoggedIn/>}
     </>
   );
   // <Route/>
