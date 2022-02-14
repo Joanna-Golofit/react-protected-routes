@@ -2,19 +2,24 @@ import React from "react";
 import { useState } from "react";
 
 const Home = ({ setIsAuth, setName, name }) => {
-  const handleLogin = (e) => {
-    setName(e.target.value);
-    // e.target.value = "";
-  };
-
+        const input = document.querySelector("input");
+ 
   return (
     <div>
       Home
       <input type="text"
-        value={name}
-        name="name" onChange={handleLogin} />
-      <button onClick={() => setIsAuth(true)}>login</button>
-      <button onClick={() => setIsAuth(false)}>logout</button>
+        // value={name}
+        // name="name" 
+        onChange={(e) => setName(e.target.value)} />
+      <button onClick={() => {
+        setIsAuth(true);
+        input.value = "";
+        input.setAttribute("disabled", true);
+      }}>login</button>
+      <button onClick={() => {
+        setIsAuth(false);
+        input.removeAttribute("disabled");
+      }}>logout</button>
     </div>
   );
 };
